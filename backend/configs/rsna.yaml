@@ -1,0 +1,21 @@
+data:
+  train_csv: data/rsna/rsna_train.csv
+  val_csv: data/rsna/rsna_val.csv
+  image_size: 512
+
+train:
+  epochs: 10
+  batch_size: 16
+  lr: 1e-4
+  num_workers: 8
+  seed: 42
+  pos_weight: [5, 10, 5, 8, 5, 5]   # tune later
+
+model:
+  arch: efficientnet_b0
+  in_channels: 3
+  num_classes: 6
+
+output:
+  base_dir: runs
+  prefix: rsna

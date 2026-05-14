@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
+ENV/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Huge datasets
+data/
+stage_2_train/
+stage_2_test/
+rawdata/
+derivatives/
+cache_pt/
+
+# Medical image files
+*.dcm
+*.nii
+*.nii.gz
+
+# Generated outputs
+outputs/rsna_gradcam/
+outputs/isles_pred/
+*.png
+*.jpg
+*.jpeg
+
+# Model/cache files - upload separately if too large
+*.pth
+*.pt
+*.ckpt
+*.onnx
+
+# Logs
+*.log
+logs/
+
+# Reports temporary
+~$*.docx
