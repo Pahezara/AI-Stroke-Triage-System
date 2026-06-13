@@ -1,87 +1,201 @@
-\# AI-Powered Stroke Emergency Triage System
+# 🧠 AI-Powered Stroke Emergency Triage System
 
+Fast • Explainable • Clinical Decision Support AI for Stroke Diagnosis
 
+---
 
-This project is an AI-assisted emergency stroke triage prototype using CT and MRI medical imaging.
+## 📌 Overview
 
+This project is a full-stack AI system designed to assist in **emergency stroke detection and triage** using medical imaging.
 
+It combines deep learning models with a clinical decision engine to:
 
-\## Main Features
+- Detect intracranial hemorrhage from CT scans
+- Segment ischemic stroke lesions from MRI scans
+- Classify stroke type and severity
+- Provide explainable AI outputs (Grad-CAM)
+- Generate automated clinical PDF reports
+- Support real-time hospital decision-making
 
+---
 
+## 🚨 Problem Statement
 
-\- CT hemorrhage classification using RSNA Intracranial Hemorrhage dataset
+Stroke is a time-critical medical emergency:
 
-\- MRI ischemic lesion segmentation using ISLES 2022 dataset
+- Every minute = ~2 million neurons lost
+- Delayed diagnosis increases mortality risk
+- Radiologist workload causes delays in emergency settings
 
-\- Dual-model triage logic for stroke type and severity
+This system reduces diagnosis time using AI-assisted triage.
 
-\- Grad-CAM explainability for CT predictions
+---
 
-\- MRI lesion mask and lesion volume estimation
+## 🎯 Objective
 
-\- FastAPI backend
+To build an AI system that:
 
-\- React + Tailwind dashboard
+- Detects stroke presence (CT + MRI)
+- Classifies stroke type
+- Estimates severity
+- Provides explainability
+- Generates structured reports
+- Supports clinical decision-making
 
-\- Admin login
+---
 
-\- PDF report generation
+## 🧠 System Architecture
 
+CT Scan (DICOM)
+→ EfficientNet-B0 (RSNA Model)
+→ Hemorrhage Classification (6 classes)
 
+MRI Scan (DWI / ADC / FLAIR)
+→ 3D U-Net (ISLES Model)
+→ Ischemic Lesion Segmentation
 
-\## Models
+Fusion Layer
+→ Rule-Based Triage Engine
+→ Stroke Type + Severity + Priority
 
+Output Layer
+→ Web Dashboard + Grad-CAM + PDF Report
 
+---
 
-\- CT model: EfficientNet-B0 multi-label classifier
+## 🧪 Models Used
 
-\- MRI model: 3D U-Net segmentation model
+### CT Hemorrhage Detection
+- Dataset: RSNA Intracranial Hemorrhage Dataset
+- Model: EfficientNet-B0
+- Task: Multi-label classification (6 hemorrhage types)
 
+### MRI Stroke Segmentation
+- Dataset: ISLES 2022
+- Model: 3D U-Net (MONAI framework)
+- Task: Voxel-level lesion segmentation
 
+---
 
-\## Evaluation Results
+## 🔍 Explainability
 
+### Grad-CAM (CT)
+- Highlights regions influencing model predictions
+- Provides visual interpretation for clinicians
 
+### MRI Mask Output
+- Displays ischemic lesion regions
+- Calculates lesion volume (ml)
 
-RSNA validation mean AUC: 0.9878  
+---
 
-ISLES validation Dice: 0.5524 ± 0.2721  
+## 📊 Evaluation Results
 
-ISLES HD95: 23.4937 ± 19.3994
+### CT Model (RSNA)
+- Mean AUC: 0.9878
 
+### MRI Model (ISLES)
+- Dice Score: 0.5524
+- HD95: 23.49
 
+---
 
-\## Important Notes
+## ⚙️ Features
 
+- CT hemorrhage detection
+- MRI lesion segmentation
+- Stroke type classification
+- Severity scoring system
+- Real-time web dashboard
+- Grad-CAM explainability
+- PDF medical report generation
+- Admin login system
 
+---
 
-Full RSNA and ISLES datasets are not included in this repository due to size and access restrictions.
+## 🏗️ Tech Stack
 
+Backend:
+- FastAPI
+- PyTorch
+- MONAI
+- OpenCV
 
+Frontend:
+- React.js
+- Tailwind CSS
+- Vite
 
-Model weights are provided separately through the submission OneDrive link.
+AI Models:
+- EfficientNet-B0
+- 3D U-Net
+- Grad-CAM
 
+---
 
+## 🚀 How to Run
 
-
-This is a research prototype and must not be used for real clinical diagnosis without formal validation and regulatory approval.
-
-
-
-\## Backend Setup
-
-
-
-```bash
-
+Backend:
 cd backend
-
-python -m venv venv
-
-venv\\Scripts\\activate
-
 pip install -r requirements.txt
+uvicorn src.api:app --reload --port 8000
 
-python -m uvicorn src.api:app --reload --port 8000
+Frontend:
+cd frontend
+npm install
+npm run dev
 
+Open:
+http://localhost:5173
+
+---
+
+## 🔐 Login (Demo)
+
+Username: admin  
+Password: admin123  
+
+---
+
+## 💡 Key Innovations
+
+- Dual-modality stroke AI (CT + MRI fusion)
+- Real-time clinical decision support system
+- Explainable AI using Grad-CAM + segmentation maps
+- Automated medical report generation
+- Full-stack deployment pipeline
+
+---
+
+## ⚠️ Limitations
+
+- Requires clinical validation
+- MRI segmentation still improving
+- Not FDA/medical certified
+- Research prototype only
+
+---
+
+## 📈 Future Improvements
+
+- Transformer-based medical imaging models
+- Multi-hospital training
+- PACS integration
+- Cloud deployment (AWS / Azure)
+- Federated learning for privacy
+
+---
+
+## 👨‍🎓 Author
+
+Lakindu Pahesara  
+BSc (Hons) Data Science  
+University of Plymouth 
+
+---
+
+## 🏁 Final Note
+
+This system demonstrates an end-to-end AI pipeline for stroke triage combining medical imaging, deep learning, and clinical decision support.
+
+---
